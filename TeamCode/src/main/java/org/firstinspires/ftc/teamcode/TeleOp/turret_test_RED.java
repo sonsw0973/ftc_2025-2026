@@ -39,13 +39,8 @@ public class turret_test_RED extends LinearOpMode {
     }
 
     public boolean check_shooting_zone(Pose pose) {
-        if (pose.getX() <= 72) {
-            if (pose.getY() >= 144 - pose.getX()) return true;
-            else return false;
-        } else if (pose.getX() > 72) {
-            if (pose.getY() >= pose.getX()) return true;
-            else return false;
-        }
+        if (pose.getY() >= Math.abs(pose.getX() - 72) + 72) return true;  // Y >= |x-72| + 72
+        if (pose.getY() <= -Math.abs(pose.getX() - 72) + 72) return true; // Y <= -|x-72| + 72
         return false;
     }
 
