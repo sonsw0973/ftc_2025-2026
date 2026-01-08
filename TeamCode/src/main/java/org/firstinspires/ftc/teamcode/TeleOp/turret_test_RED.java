@@ -29,6 +29,11 @@ public class turret_test_RED extends LinearOpMode {
             follower.update();
 
             Pose current_robot_pos = follower.getPose();
+            Pose center_pos = new Pose(72, 72, follower.getHeading());
+
+            if (gamepad1.touchpadWasPressed()) {
+                follower.setPose(center_pos);
+            }
 
             if (check_shooting_zone(current_robot_pos)) {
                 turret.setTargetPosition(tracking.fix_to_goal_RED(current_robot_pos));
